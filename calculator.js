@@ -1,11 +1,17 @@
 let buffer = '0';
+
 const screen=document.querySelector(".screen")
+
 function buttonClick(value) {
-    console.log(value);
+   console.log(value);
     if (isNaN(parseInt(value))) {
         handleSymbol(value);
     }
-    handleNumber(value);
+    else{
+        handleNumber(value);
+    }
+ 
+    rerender()
 }
 
 function handleNumber(number) {
@@ -14,12 +20,43 @@ function handleNumber(number) {
     } else {
         buffer += number;
     }
-    console.log(buffer);
-    rerender()
+  
+   // 
 }
 
 function handleSymbol(symbol) {
-    console.log("simbol");
+    switch (symbol) {
+        case "C":
+        buffer="0";
+        break;
+        case "=":
+        console.log("equals");
+        break
+        case "←":
+        if (buffer.length===1) {
+                buffer="0"
+                console.log(buffer);
+            }else{
+                buffer=buffer.substring(0,buffer.length-1)
+                console.log(buffer);
+            } 
+        console.log("back error");
+        break
+        case "+":
+        console.log("plus");
+        break
+        case "-":
+        console.log("minus");
+        break
+        case "÷":
+        console.log("division");
+        break
+        case "×":
+        console.log("math simbol");
+        break
+        default:
+        break;
+    }
 }
 
 function init() {
