@@ -1,3 +1,4 @@
+//buffer
 let buffer = '0';
 
 const screen=document.querySelector(".screen")
