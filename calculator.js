@@ -1,5 +1,6 @@
 let buffer = '0';
-
+let  runningTotal=0
+let previousOperator=null
 const screen=document.querySelector(".screen")
 
 function buttonClick(value) {
@@ -24,21 +25,56 @@ function handleNumber(number) {
    // 
 }
 
+
+function handleMath(value) {
+    if (buffer==="0") {
+        return
+    }
+
+    const intBuffer=parseInt(buffer)
+    if (runningTotal===0) {
+        runningTotal=intBuffer
+    }
+    else{
+        flushOperation(buffer)
+    }
+    previousOperator=value
+    buffer="0"
+    console.log(runningTotal);
+}
+
+function flushOperation(intBuffer) {
+    if (previousOperator==="+") {
+        runningTotal+=intBuffer
+    }else if(previousOperator==='-'){
+        runningTotal-=intBuffer
+    }
+    else if(previousOperator==='×'){
+        runningTotal*=intBuffer
+    }
+    else if(previousOperator==='÷'){
+        runningTotal/=intBuffer
+    }
+}
+
 function handleSymbol(symbol) {
     switch (symbol) {
         case "C":
         buffer="0";
         break;
         case "=":
-        console.log("equals");
+        if (previousOperator===null) {
+            return
+        }
+        flushOperation(parseInt(buffer))
         break
         case "←":
         if (buffer.length===1) {
                 buffer="0"
-                console.log(buffer);
+                
             }else{
                 buffer=buffer.substring(0,buffer.length-1)
-                console.log(buffer);
+                
             } 
         console.log("back error");
         break
@@ -52,7 +88,7 @@ function handleSymbol(symbol) {
         console.log("division");
         break
         case "×":
-        console.log("math simbol");
+        handleMath(symbol)
         break
         default:
         break;
