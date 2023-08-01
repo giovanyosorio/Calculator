@@ -68,6 +68,9 @@ function handleSymbol(symbol) {
             return
         }
         flushOperation(parseInt(buffer))
+        previousOperator=null
+        buffer= "" + runningTotal
+        runningTotal=0
         break
         case "←":
         if (buffer.length===1) {
