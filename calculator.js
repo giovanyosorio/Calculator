@@ -1,3 +1,4 @@
+//buffer
 let buffer = '0';
 let  runningTotal=0
 let previousOperator=null
