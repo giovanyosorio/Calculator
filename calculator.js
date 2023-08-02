@@ -18,12 +18,10 @@ function buttonClick(value) {
 
 function handleNumber(number) {
     if (buffer === '0') {
-        console.log("buffer",buffer);
         buffer = number;
     } else {
         buffer += number;
     }
-  
    // 
 }
 
@@ -32,7 +30,6 @@ function handleMath(value) {
     if (buffer==="0") {
         return
     }
-
     const intBuffer=parseInt(buffer)
     if (runningTotal===0) {
         runningTotal=intBuffer
@@ -42,7 +39,6 @@ function handleMath(value) {
     }
     previousOperator=value
     buffer="0"
-    console.log(runningTotal);
 }
 
 function flushOperation(intBuffer) {
@@ -85,8 +81,8 @@ function handleSymbol(symbol) {
         handleMath(symbol)
         break
         case "+":
-        console.log("plus");
         handleMath(symbol)
+        buffer=symbol
         break
         case "-":
         console.log("minus");
