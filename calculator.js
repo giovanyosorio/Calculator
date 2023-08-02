@@ -18,6 +18,7 @@ function buttonClick(value) {
 
 function handleNumber(number) {
     if (buffer === '0') {
+        console.log("buffer",buffer);
         buffer = number;
     } else {
         buffer += number;
@@ -81,15 +82,19 @@ function handleSymbol(symbol) {
                 
             } 
         console.log("back error");
+        handleMath(symbol)
         break
         case "+":
         console.log("plus");
+        handleMath(symbol)
         break
         case "-":
         console.log("minus");
+        handleMath(symbol)
         break
         case "÷":
         console.log("division");
+        handleMath(symbol)
         break
         case "×":
         handleMath(symbol)
